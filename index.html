@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- PRIMARY META TAGS -->
+    <!-- PRIMARY META TAGS & CANONICAL -->
     <title>Hafsa W. Mathenge | Medical & Health-Tech Professional</title>
+    <link rel="canonical" href="https://hafsamathenge.github.io/">
     <meta name="title" content="Hafsa W. Mathenge | Medical & Health-Tech Professional">
     <meta name="description" content="Portfolio of Hafsa W. Mathenge, an MBChB Graduate operating at the intersection of clinical reasoning, data management, and digital health.">
     <meta name="keywords" content="Hafsa Mathenge, Medical Intern, Clinical Researcher, Health Tech, MBChB, Ginja.ai, Nairobi Health">
     <meta name="author" content="Hafsa W. Mathenge">
 
-    <!-- OPEN GRAPH / FACEBOOK -->
+    <!-- OPEN GRAPH / FACEBOOK (Uses profile image for social media previews) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hafsamathenge.github.io/">
     <meta property="og:title" content="Hafsa W. Mathenge | Medical & Health-Tech Professional">
@@ -25,9 +26,9 @@
     <meta property="twitter:description" content="Operating at the intersection of clinical reasoning and technological curiosity. Driving impactful, cost-effective healthcare solutions.">
     <meta property="twitter:image" content="./profile.webp">
 
-    <!-- ICONS / FAVICON -->
-    <link rel="icon" type="image/webp" href="./profile.webp">
-    <link rel="apple-touch-icon" href="./profile.webp">
+    <!-- ICONS / FAVICON (Generated 'H' Symbol for browser tab) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232563eb'/><text x='50%' y='50%' font-family='Arial, sans-serif' font-size='65' font-weight='bold' fill='%23ffffff' text-anchor='middle' dominant-baseline='central'>H</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232563eb'/><text x='50%' y='50%' font-family='Arial, sans-serif' font-size='65' font-weight='bold' fill='%23ffffff' text-anchor='middle' dominant-baseline='central'>H</text></svg>">
 
     <!-- FONTS & FONT AWESOME -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -66,7 +67,7 @@
         a { text-decoration: none; color: inherit; }
         
         .container {
-            max-width: 1280px; /* UPDATED TO 1280PX */
+            max-width: 1280px; 
             margin: 0 auto;
             padding: 0 2rem;
         }
@@ -121,7 +122,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1280px; /* UPDATED TO 1280PX */
+            max-width: 1280px; 
             margin: 0 auto;
             padding: 0 2rem;
         }
@@ -376,7 +377,7 @@
             </div>
             <div class="hero-img reveal" style="transition-delay: 0.2s;">
                 <div class="image-wrapper">
-                    <!-- Updated to use your local profile image -->
+                    <!-- Local profile image -->
                     <img src="./profile.webp" alt="Hafsa Mathenge Profile Image" onerror="this.src='https://images.unsplash.com/photo-1594824436998-05220eb800f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
                 </div>
             </div>
@@ -547,11 +548,11 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Hafsa W. Mathenge. Built for the intersection of Medicine and Tech.</p>
+            <p>&copy; <span id="current-year"></span> Hafsa W. Mathenge. Built for the intersection of Medicine and Tech.</p>
         </div>
     </footer>
 
-    <!-- JAVASCRIPT FOR ANIMATIONS & MOBILE MENU -->
+    <!-- JAVASCRIPT FOR ANIMATIONS, MOBILE MENU & FOOTER YEAR -->
     <script>
         // 1. Scroll Reveal Animation Script
         function reveal() {
@@ -575,7 +576,6 @@
 
         menuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-            // Change icon from bars to X
             if(navLinks.classList.contains('active')){
                 menuBtn.classList.remove('fa-bars');
                 menuBtn.classList.add('fa-xmark');
@@ -585,7 +585,6 @@
             }
         });
 
-        // Close mobile menu when a link is clicked
         navItems.forEach(item => {
             item.addEventListener('click', () => {
                 navLinks.classList.remove('active');
@@ -593,6 +592,9 @@
                 menuBtn.classList.add('fa-bars');
             });
         });
+
+        // 3. Dynamic Footer Year Script
+        document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
