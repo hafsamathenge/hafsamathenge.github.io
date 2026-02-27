@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hafsa W. Mathenge | Medical & Health-Tech Professional</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary: #0f172a; /* Deep Slate */
+            --accent: #2563eb; /* Tech Blue */
+            --accent-light: #eff6ff;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --bg-color: #f8fafc;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- TYPOGRAPHY & UTILITIES --- */
+        h1, h2, h3, h4 { color: var(--primary); }
+        a { text-decoration: none; color: inherit; }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        section { padding: 5rem 0; }
+
+        /* --- ANIMATIONS --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 1rem 0;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { font-weight: 500; transition: var(--transition); }
+        .nav-links a:hover { color: var(--accent); }
+        
+        /* --- HERO SECTION --- */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--bg-color) 0%, var(--accent-light) 100%);
+            padding-top: 60px;
+        }
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+        .hero-text { flex: 1; }
+        .hero-text h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1rem; }
+        .hero-text h2 { font-size: 1.5rem; color: var(--accent); margin-bottom: 1.5rem; font-weight: 600; }
+        .hero-text p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+        .btn-primary:hover { background: #1d4ed8; transform: translateY(-2px); }
+        .btn-outline {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            margin-left: 1rem;
+        }
+        .btn-outline:hover { background: var(--accent); color: var(--white); }
+
+        .hero-img {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        .image-wrapper {
+            position: relative;
+            width: 350px;
+            height: 350px;
+        }
+        /* CHANGE YOUR IMAGE URL HERE */
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2;
+            border: 8px solid var(--white);
+        }
+        .image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -20px; right: -20px; bottom: -20px; left: -20px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: 1;
+            animation: pulse 3s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        .about-text p { margin-bottom: 1.5rem; font-size: 1.05rem; }
+        .highlight-box {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--accent);
+        }
+        .highlight-box h3 { margin-bottom: 1rem; font-size: 1.2rem; }
+
+        /* --- EXPERIENCE SECTION (TIMELINE) --- */
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+        .timeline::before {
+            content: ''; position: absolute; top: 0; left: 20px; height: 100%; width: 2px; background: #e2e8f0;
+        }
+        .timeline-item {
+            position: relative; padding-left: 60px; margin-bottom: 3rem;
+        }
+        .timeline-item::before {
+            content: ''; position: absolute; left: 11px; top: 5px; width: 20px; height: 20px;
+            background: var(--accent); border-radius: 50%; border: 4px solid var(--white);
+            box-shadow: 0 0 0 3px var(--accent-light);
+        }
+        .timeline-content {
+            background: var(--white); padding: 1.5rem 2rem; border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03); transition: var(--transition);
+        }
+        .timeline-content:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .timeline-date { color: var(--accent); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .timeline-title { font-size: 1.2rem; margin-bottom: 0.2rem; color: var(--primary); }
+        .timeline-company { font-style: italic; color: var(--text-muted); margin-bottom: 1rem; display: block; }
+        .timeline-content ul { padding-left: 1.5rem; color: var(--text-main); }
+        .timeline-content li { margin-bottom: 0.5rem; }
+
+        /* --- SKILLS SECTION --- */
+        .skills-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;
+        }
+        .skill-card {
+            background: var(--white); padding: 2rem; border-radius: 12px;
+            text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.03); transition: var(--transition);
+        }
+        .skill-card:hover { transform: translateY(-10px); }
+        .skill-icon { font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem; }
+        .skill-card h3 { margin-bottom: 1rem; }
+        .skill-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+        .tag {
+            background: var(--accent-light); color: var(--accent); padding: 0.4rem 0.8rem;
+            border-radius: 50px; font-size: 0.85rem; font-weight: 500;
+        }
+
+        /* --- CONTACT SECTION --- */
+        #contact { background: var(--primary); color: var(--white); text-align: center; }
+        #contact .section-title { color: var(--white); }
+        #contact .section-title::after { background: var(--accent); }
+        .contact-info { display: flex; justify-content: center; gap: 3rem; margin-top: 2rem; flex-wrap: wrap; }
+        .contact-item { display: flex; align-items: center; gap: 1rem; font-size: 1.1rem; }
+        .contact-item i { font-size: 1.5rem; color: var(--accent); }
+        footer { background: #0b1120; padding: 2rem 0; text-align: center; color: var(--text-muted); }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            .hero-content { flex-direction: column-reverse; text-align: center; margin-top: 2rem; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .btn-outline { margin-left: 0; margin-top: 1rem; display: block; }
+            .about-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; } /* Add hamburger menu in a full build */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Hafsa<span>.</span></div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills & Tech</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero">
+        <div class="container hero-content">
+            <div class="hero-text reveal">
+                <h1>Hafsa W. Mathenge</h1>
+                <h2>MBChB Graduate | Clinical Researcher | Health-Tech Enthusiast</h2>
+                <p>Operating at the intersection of clinical reasoning and technological curiosity. I leverage medical expertise, data management, and systems thinking to drive impactful, cost-effective healthcare solutions.</p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn btn-primary">Let's Connect</a>
+                    <a href="#experience" class="btn btn-outline">View Experience</a>
+                </div>
+            </div>
+            <div class="hero-img reveal" style="transition-delay: 0.2s;">
+                <div class="image-wrapper">
+                    <!-- PLACEHOLDER IMAGE: Replace the src with a link to your own photo -->
+                    <img src="https://images.unsplash.com/photo-1594824436998-05220eb800f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hafsa Mathenge">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="container">
+        <h2 class="section-title reveal">About Me</h2>
+        <div class="about-grid reveal">
+            <div class="about-text">
+                <p>I am a self-driven and detail-oriented graduate MBChB student with a deep foundation in medicine and robust hands-on experience in clinical research and data management.</p>
+                <p>My passion lies in <strong>Digital Health and Systems Thinking</strong>. From analyzing Non-Communicable Disease (NCD) risk factors using digital collection tools to interning at health-tech companies, I am dedicated to using technology to make healthcare accurate, sustainable, and accessible.</p>
+                <p>I believe in continuous learning. Beyond my coursework at the University of Nairobi, I regularly read published medical journals, attend medical webinars, and hold TRREE certifications in Research Ethics.</p>
+            </div>
+            <div class="highlight-box">
+                <h3><i class="fa-solid fa-lightbulb" style="color: var(--accent); margin-right: 10px;"></i> My Approach</h3>
+                <ul style="padding-left: 20px; color: var(--text-muted); line-height: 1.8;">
+                    <li><strong>Evidence-Based Clinical Logic:</strong> Anchoring technological workflows and health insurance claims on updated clinical guidelines.</li>
+                    <li><strong>Systems Thinking:</strong> Looking beyond immediate symptoms to address built environments, affordability, and stress factors in public health.</li>
+                    <li><strong>Cross-Functional Empathy:</strong> Bridging the gap between medical needs, actuarial cost-containment, and software engineering logic.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" style="background-color: #fff;">
+        <div class="container">
+            <h2 class="section-title reveal">Professional Experience</h2>
+            <div class="timeline">
+
+                <!-- UoN -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-content">
+                        <span class="timeline-date">Aug 2025 – Nov 2025</span>
+                        <h3 class="timeline-title">Research Associate</h3>
+                        <span class="timeline-company">The University of Nairobi | Nairobi, Kenya</span>
+                        <ul>
+                            <li>Field Research Assistant for the HIP study assessing patient attitudes toward integrating HIV services into primary healthcare.</li>
+                            <li>Applied formal training on research ethics, survey administration, and rigorous data collection protocols.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Global Child Health -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-content">
+                        <span class="timeline-date">Oct 2024 – Present</span>
+                        <h3 class="timeline-title">Executive Committee Member</h3>
+                        <span class="timeline-company">Global Child Health SIG | Nairobi, Kenya</span>
+                        <ul>
+                            <li>Manage public health initiatives focused on child mortality reduction, encompassing project design, implementation, and evaluation.</li>
+                            <li>Develop advocacy campaigns and coordinate educational events with global health professionals.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Intellisoft -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-content">
+                        <span class="timeline-date">Feb 2024 – Mar 2024</span>
+                        <h3 class="timeline-title">Field Data Collector</h3>
+                        <span class="timeline-company">Intellisoft | Nairobi, Kenya</span>
+                        <ul>
+                            <li>Researched NCD risk factor awareness among youth in Nairobi County.</li>
+                            <li>Utilized the KoboCollect mobile app to capture and manage high-quality quantitative data, ensuring accuracy before submission.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- DOCTHUS -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-content">
+                        <span class="timeline-date">June 2023 – Dec 2023</span>
+                        <h3 class="timeline-title">Intern (Health Tech)</h3>
+                        <span class="timeline-company">DOCTHUS | Nairobi, Kenya</span>
+                        <ul>
+                            <li>Conducted research and gathered data to support the development of new digital health technology solutions.</li>
+                            <li>Analyzed market trends and summarized clinical information to bridge the gap between medicine and product development.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- KNH -->
+                <div class="timeline-item reveal">
+                    <div class="timeline-content">
+                        <span class="timeline-date">Nov 2021 – April 2022</span>
+                        <h3 class="timeline-title">Research Assistant</h3>
+                        <span class="timeline-company">Kenyatta National Hospital | Nairobi, Kenya</span>
+                        <ul>
+                            <li>Managed clinical trial information entry into Microsoft Excel and REDCap with 100% accuracy.</li>
+                            <li>Liaised between clinical staff and research teams to ensure smooth operational workflow and patient screening.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="container">
+        <h2 class="section-title reveal">Core Competencies & Tech Stack</h2>
+        <div class="skills-grid">
+            
+            <div class="skill-card reveal">
+                <i class="fa-solid fa-stethoscope skill-icon"></i>
+                <h3>Clinical & Medical</h3>
+                <div class="skill-tags">
+                    <span class="tag">MBChB Knowledge</span>
+                    <span class="tag">Patient Assessment</span>
+                    <span class="tag">NCD Protocols</span>
+                    <span class="tag">Medical Terminology</span>
+                    <span class="tag">Preventative Care</span>
+                </div>
+            </div>
+
+            <div class="skill-card reveal" style="transition-delay: 0.1s;">
+                <i class="fa-solid fa-database skill-icon"></i>
+                <h3 >Research & Data</h3>
+                <div class="skill-tags">
+                    <span class="tag">REDCap</span>
+                    <span class="tag">KoboCollect</span>
+                    <span class="tag">Quantitative Data Entry</span>
+                    <span class="tag">Informed Consent</span>
+                    <span class="tag">Medical Ethics</span>
+                </div>
+            </div>
+
+            <div class="skill-card reveal" style="transition-delay: 0.2s;">
+                <i class="fa-solid fa-certificate skill-icon"></i>
+                <h3>Certifications</h3>
+                <div class="skill-tags">
+                    <span class="tag">TRREE: Research Ethics</span>
+                    <span class="tag">TRREE: Informed Consent</span>
+                    <span class="tag">FAMSA: Scientific Writing</span>
+                    <span class="tag">Fluent English & Swahili</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <div class="container reveal">
+            <h2 class="section-title">Get In Touch</h2>
+            <p style="max-width: 600px; margin: 0 auto; font-size: 1.1rem;">
+                Whether you're looking for a medical intern who understands data, or you want to discuss the future of digital health in emerging markets, my inbox is open.
+            </p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <a href="mailto:hafsamathenge@gmail.com">hafsamathenge@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+254 705 948445</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Nairobi, Kenya</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Hafsa W. Mathenge. Built for the intersection of Medicine and Tech.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FOR ANIMATIONS -->
+    <script>
+        // Scroll Reveal Animation Script
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Trigger on load
+    </script>
+</body>
+</html>
