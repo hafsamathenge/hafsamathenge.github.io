@@ -3,23 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- PRIMARY META TAGS -->
     <title>Hafsa W. Mathenge | Medical & Health-Tech Professional</title>
-    <!-- Fonts -->
+    <meta name="title" content="Hafsa W. Mathenge | Medical & Health-Tech Professional">
+    <meta name="description" content="Portfolio of Hafsa W. Mathenge, an MBChB Graduate operating at the intersection of clinical reasoning, data management, and digital health.">
+    <meta name="keywords" content="Hafsa Mathenge, Medical Intern, Clinical Researcher, Health Tech, MBChB, Ginja.ai, Nairobi Health">
+    <meta name="author" content="Hafsa W. Mathenge">
+
+    <!-- OPEN GRAPH / FACEBOOK -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hafsamathenge.github.io/">
+    <meta property="og:title" content="Hafsa W. Mathenge | Medical & Health-Tech Professional">
+    <meta property="og:description" content="Operating at the intersection of clinical reasoning and technological curiosity. Driving impactful, cost-effective healthcare solutions.">
+    <meta property="og:image" content="./profile.webp">
+
+    <!-- TWITTER -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hafsamathenge.github.io/">
+    <meta property="twitter:title" content="Hafsa W. Mathenge | Medical & Health-Tech Professional">
+    <meta property="twitter:description" content="Operating at the intersection of clinical reasoning and technological curiosity. Driving impactful, cost-effective healthcare solutions.">
+    <meta property="twitter:image" content="./profile.webp">
+
+    <!-- ICONS / FAVICON -->
+    <link rel="icon" type="image/webp" href="./profile.webp">
+    <link rel="apple-touch-icon" href="./profile.webp">
+
+    <!-- FONTS & FONT AWESOME -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         /* --- CSS VARIABLES & RESET --- */
         :root {
-            --primary: #0f172a; /* Deep Slate */
-            --accent: #2563eb; /* Tech Blue */
+            --primary: #0f172a; 
+            --accent: #2563eb; 
             --accent-light: #eff6ff;
             --text-main: #334155;
             --text-muted: #64748b;
             --bg-color: #f8fafc;
             --white: #ffffff;
-            --transition: all 0.3s ease;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
@@ -40,36 +64,40 @@
         /* --- TYPOGRAPHY & UTILITIES --- */
         h1, h2, h3, h4 { color: var(--primary); }
         a { text-decoration: none; color: inherit; }
+        
         .container {
-            max-width: 1100px;
+            max-width: 1280px; /* UPDATED TO 1280PX */
             margin: 0 auto;
             padding: 0 2rem;
         }
+        
         .section-title {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 3rem;
             text-align: center;
             position: relative;
         }
+        
         .section-title::after {
             content: '';
-            width: 60px;
+            width: 80px;
             height: 4px;
             background: var(--accent);
             position: absolute;
-            bottom: -10px;
+            bottom: -12px;
             left: 50%;
             transform: translateX(-50%);
             border-radius: 2px;
         }
-        section { padding: 5rem 0; }
+        
+        section { padding: 6rem 0; }
 
         /* --- ANIMATIONS --- */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
         .reveal.active {
             opacity: 1;
@@ -84,46 +112,63 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             padding: 1rem 0;
+            transition: var(--transition);
         }
+        
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1100px;
+            max-width: 1280px; /* UPDATED TO 1280PX */
             margin: 0 auto;
             padding: 0 2rem;
         }
-        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); }
-        .logo span { color: var(--accent); }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { font-weight: 500; transition: var(--transition); }
-        .nav-links a:hover { color: var(--accent); }
         
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary); z-index: 1001;}
+        .logo span { color: var(--accent); }
+        
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a { font-weight: 500; font-size: 1.05rem; transition: var(--transition); }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Mobile Menu Button */
+        .menu-btn {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary);
+            z-index: 1001;
+        }
+
         /* --- HERO SECTION --- */
         #hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             background: linear-gradient(135deg, var(--bg-color) 0%, var(--accent-light) 100%);
-            padding-top: 60px;
+            padding-top: 80px;
         }
+        
         .hero-content {
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 4rem;
         }
-        .hero-text { flex: 1; }
-        .hero-text h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 1rem; }
-        .hero-text h2 { font-size: 1.5rem; color: var(--accent); margin-bottom: 1.5rem; font-weight: 600; }
-        .hero-text p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; }
+        
+        .hero-text { flex: 1.2; }
+        .hero-text h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 1rem; letter-spacing: -1px; }
+        .hero-text h2 { font-size: 1.6rem; color: var(--accent); margin-bottom: 1.5rem; font-weight: 600; }
+        .hero-text p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2.5rem; max-width: 90%; }
         
         .btn {
             display: inline-block;
-            padding: 0.8rem 2rem;
+            padding: 0.9rem 2.5rem;
             border-radius: 50px;
             font-weight: 600;
+            font-size: 1.05rem;
             transition: var(--transition);
             cursor: pointer;
         }
@@ -132,35 +177,38 @@
             color: var(--white);
             box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
         }
-        .btn-primary:hover { background: #1d4ed8; transform: translateY(-2px); }
+        .btn-primary:hover { background: #1d4ed8; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4); }
+        
         .btn-outline {
             border: 2px solid var(--accent);
             color: var(--accent);
             margin-left: 1rem;
         }
-        .btn-outline:hover { background: var(--accent); color: var(--white); }
+        .btn-outline:hover { background: var(--accent); color: var(--white); transform: translateY(-3px); }
 
         .hero-img {
             flex: 1;
             display: flex;
             justify-content: center;
         }
+        
         .image-wrapper {
             position: relative;
-            width: 350px;
-            height: 350px;
+            width: 400px;
+            height: 400px;
         }
-        /* CHANGE YOUR IMAGE URL HERE */
+        
         .image-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
             position: relative;
             z-index: 2;
             border: 8px solid var(--white);
         }
+        
         .image-wrapper::before {
             content: '';
             position: absolute;
@@ -169,8 +217,9 @@
             border-radius: 50%;
             opacity: 0.1;
             z-index: 1;
-            animation: pulse 3s infinite;
+            animation: pulse 3s infinite ease-in-out;
         }
+        
         @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
@@ -178,74 +227,122 @@
         }
 
         /* --- ABOUT SECTION --- */
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-        .about-text p { margin-bottom: 1.5rem; font-size: 1.05rem; }
+        .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center; }
+        .about-text p { margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--text-main); }
+        
         .highlight-box {
             background: var(--white);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border-left: 4px solid var(--accent);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+            border-left: 5px solid var(--accent);
         }
-        .highlight-box h3 { margin-bottom: 1rem; font-size: 1.2rem; }
+        .highlight-box h3 { margin-bottom: 1.5rem; font-size: 1.4rem; }
+        .highlight-box li { margin-bottom: 1rem; font-size: 1.05rem; }
 
         /* --- EXPERIENCE SECTION (TIMELINE) --- */
-        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+        .timeline { position: relative; max-width: 900px; margin: 0 auto; }
         .timeline::before {
-            content: ''; position: absolute; top: 0; left: 20px; height: 100%; width: 2px; background: #e2e8f0;
+            content: ''; position: absolute; top: 0; left: 24px; height: 100%; width: 3px; background: #e2e8f0;
         }
-        .timeline-item {
-            position: relative; padding-left: 60px; margin-bottom: 3rem;
-        }
+        .timeline-item { position: relative; padding-left: 70px; margin-bottom: 3.5rem; }
         .timeline-item::before {
-            content: ''; position: absolute; left: 11px; top: 5px; width: 20px; height: 20px;
+            content: ''; position: absolute; left: 13px; top: 5px; width: 24px; height: 24px;
             background: var(--accent); border-radius: 50%; border: 4px solid var(--white);
-            box-shadow: 0 0 0 3px var(--accent-light);
+            box-shadow: 0 0 0 4px var(--accent-light);
         }
+        
         .timeline-content {
-            background: var(--white); padding: 1.5rem 2rem; border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.03); transition: var(--transition);
+            background: var(--white); padding: 2rem; border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.04); transition: var(--transition);
         }
-        .timeline-content:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
-        .timeline-date { color: var(--accent); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; }
-        .timeline-title { font-size: 1.2rem; margin-bottom: 0.2rem; color: var(--primary); }
-        .timeline-company { font-style: italic; color: var(--text-muted); margin-bottom: 1rem; display: block; }
-        .timeline-content ul { padding-left: 1.5rem; color: var(--text-main); }
-        .timeline-content li { margin-bottom: 0.5rem; }
+        .timeline-content:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
+        .timeline-date { color: var(--accent); font-weight: 700; font-size: 0.95rem; margin-bottom: 0.5rem; display: inline-block; background: var(--accent-light); padding: 0.3rem 1rem; border-radius: 50px; }
+        .timeline-title { font-size: 1.3rem; margin-top: 1rem; margin-bottom: 0.3rem; color: var(--primary); }
+        .timeline-company { font-weight: 500; color: var(--text-muted); margin-bottom: 1rem; display: block; }
+        .timeline-content ul { padding-left: 1.2rem; color: var(--text-main); }
+        .timeline-content li { margin-bottom: 0.6rem; font-size: 1.05rem; }
 
         /* --- SKILLS SECTION --- */
-        .skills-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;
-        }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
         .skill-card {
-            background: var(--white); padding: 2rem; border-radius: 12px;
-            text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.03); transition: var(--transition);
+            background: var(--white); padding: 2.5rem; border-radius: 16px;
+            text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.04); transition: var(--transition);
         }
-        .skill-card:hover { transform: translateY(-10px); }
-        .skill-icon { font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem; }
-        .skill-card h3 { margin-bottom: 1rem; }
-        .skill-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+        .skill-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
+        .skill-icon { font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem; }
+        .skill-card h3 { margin-bottom: 1.5rem; font-size: 1.3rem;}
+        .skill-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; }
         .tag {
-            background: var(--accent-light); color: var(--accent); padding: 0.4rem 0.8rem;
-            border-radius: 50px; font-size: 0.85rem; font-weight: 500;
+            background: var(--accent-light); color: var(--accent); padding: 0.5rem 1rem;
+            border-radius: 50px; font-size: 0.9rem; font-weight: 600; transition: var(--transition);
         }
+        .tag:hover { background: var(--accent); color: var(--white); }
 
         /* --- CONTACT SECTION --- */
         #contact { background: var(--primary); color: var(--white); text-align: center; }
         #contact .section-title { color: var(--white); }
         #contact .section-title::after { background: var(--accent); }
-        .contact-info { display: flex; justify-content: center; gap: 3rem; margin-top: 2rem; flex-wrap: wrap; }
-        .contact-item { display: flex; align-items: center; gap: 1rem; font-size: 1.1rem; }
-        .contact-item i { font-size: 1.5rem; color: var(--accent); }
-        footer { background: #0b1120; padding: 2rem 0; text-align: center; color: var(--text-muted); }
+        .contact-info { display: flex; justify-content: center; gap: 4rem; margin-top: 3rem; flex-wrap: wrap; }
+        .contact-item { display: flex; flex-direction: column; align-items: center; gap: 1rem; font-size: 1.15rem; transition: var(--transition);}
+        .contact-item:hover { transform: translateY(-5px); }
+        .contact-item i { font-size: 2.5rem; color: var(--accent); background: rgba(255,255,255,0.1); padding: 1.2rem; border-radius: 50%;}
+        
+        footer { background: #0b1120; padding: 2rem 0; text-align: center; color: var(--text-muted); font-size: 0.95rem;}
 
-        /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 768px) {
-            .hero-content { flex-direction: column-reverse; text-align: center; margin-top: 2rem; }
-            .hero-text h1 { font-size: 2.5rem; }
-            .btn-outline { margin-left: 0; margin-top: 1rem; display: block; }
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 1024px) {
+            .hero-content { gap: 2rem; }
+            .hero-text h1 { font-size: 3.2rem; }
+            .image-wrapper { width: 320px; height: 320px; }
             .about-grid { grid-template-columns: 1fr; }
-            .nav-links { display: none; } /* Add hamburger menu in a full build */
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 4rem 0; }
+            .section-title { font-size: 2rem; margin-bottom: 2.5rem; }
+            
+            /* Navbar Mobile */
+            .menu-btn { display: block; }
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background: var(--white);
+                width: 100%;
+                text-align: center;
+                gap: 0;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+                transition: var(--transition);
+            }
+            .nav-links.active { left: 0; }
+            .nav-links li { padding: 1.5rem 0; border-bottom: 1px solid #f1f5f9; }
+            .nav-links li:last-child { border-bottom: none; }
+            
+            /* Hero Mobile */
+            .hero-content { flex-direction: column-reverse; text-align: center; margin-top: 2rem; }
+            .hero-text p { max-width: 100%; margin: 0 auto 2rem auto; }
+            .btn-outline { margin-left: 0; margin-top: 1rem; display: block; width: 100%; max-width: 300px; margin: 1rem auto 0 auto; }
+            .btn-primary { width: 100%; max-width: 300px; }
+            .image-wrapper { width: 260px; height: 260px; border-width: 5px; }
+            .image-wrapper::before { top: -10px; right: -10px; bottom: -10px; left: -10px; }
+
+            /* Timeline Mobile */
+            .timeline::before { left: 15px; }
+            .timeline-item { padding-left: 45px; }
+            .timeline-item::before { left: 4px; width: 20px; height: 20px; }
+            .timeline-content { padding: 1.5rem; }
+            
+            /* Contact Mobile */
+            .contact-info { gap: 2rem; flex-direction: column; align-items: center; }
+            .contact-item { width: 100%; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 { font-size: 2.5rem; }
+            .hero-text h2 { font-size: 1.3rem; }
+            .image-wrapper { width: 220px; height: 220px; }
         }
     </style>
 </head>
@@ -255,11 +352,12 @@
     <nav>
         <div class="nav-container">
             <div class="logo">Hafsa<span>.</span></div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills & Tech</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <i class="fa-solid fa-bars menu-btn" id="menu-btn"></i>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#skills" class="nav-link">Skills & Tech</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -278,8 +376,8 @@
             </div>
             <div class="hero-img reveal" style="transition-delay: 0.2s;">
                 <div class="image-wrapper">
-                    <!-- PLACEHOLDER IMAGE: Replace the src with a link to your own photo -->
-                    <img src="/profile.webp" alt="Hafsa Mathenge">
+                    <!-- Updated to use your local profile image -->
+                    <img src="./profile.webp" alt="Hafsa Mathenge Profile Image" onerror="this.src='https://images.unsplash.com/photo-1594824436998-05220eb800f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
                 </div>
             </div>
         </div>
@@ -427,7 +525,7 @@
     <section id="contact">
         <div class="container reveal">
             <h2 class="section-title">Get In Touch</h2>
-            <p style="max-width: 600px; margin: 0 auto; font-size: 1.1rem;">
+            <p style="max-width: 600px; margin: 0 auto; font-size: 1.15rem;">
                 Whether you're looking for a medical intern who understands data, or you want to discuss the future of digital health in emerging markets, my inbox is open.
             </p>
             <div class="contact-info">
@@ -453,9 +551,9 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT FOR ANIMATIONS -->
+    <!-- JAVASCRIPT FOR ANIMATIONS & MOBILE MENU -->
     <script>
-        // Scroll Reveal Animation Script
+        // 1. Scroll Reveal Animation Script
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -469,6 +567,32 @@
         }
         window.addEventListener("scroll", reveal);
         reveal(); // Trigger on load
+
+        // 2. Mobile Menu Toggle Script
+        const menuBtn = document.getElementById('menu-btn');
+        const navLinks = document.getElementById('nav-links');
+        const navItems = document.querySelectorAll('.nav-link');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            // Change icon from bars to X
+            if(navLinks.classList.contains('active')){
+                menuBtn.classList.remove('fa-bars');
+                menuBtn.classList.add('fa-xmark');
+            } else {
+                menuBtn.classList.remove('fa-xmark');
+                menuBtn.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuBtn.classList.remove('fa-xmark');
+                menuBtn.classList.add('fa-bars');
+            });
+        });
     </script>
 </body>
 </html>
